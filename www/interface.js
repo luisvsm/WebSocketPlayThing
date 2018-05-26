@@ -12,8 +12,12 @@ function UnityLoaded(){
     Start();
 }
 
-function ToJavascript(str){
-    console.log("[Unity] " + str);
+function StringToJavascript(str){
+    console.log("[Unity] " + str.toString());
+}
+
+function PassThroughUnity(eventObj){
+    messageQueue.push(eventObj);
 }
 
 function ToUnity(event, payload){

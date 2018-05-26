@@ -37,8 +37,12 @@ public class ConsoleLog : MonoBehaviour {
 			Log(eventObj.p, "js");
 		}
 	}
-
+	private static int maxLength = 2000;
+	private static int trimTo = 1000;
 	public static void Log(string logText, string heading = "Debug"){
+		if(Instance.builder.Length > maxLength){
+			Instance.builder.Remove(trimTo, Instance.builder.Length - trimTo);
+		}
 		Instance.builder.Insert(0, "[" + heading + "] " + logText + "\n");
 		Instance.outputText.text = Instance.builder.ToString();
 	}

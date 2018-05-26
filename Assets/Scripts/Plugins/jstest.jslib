@@ -5,7 +5,11 @@ mergeInto(LibraryManager.library, {
   },
 
   ToJavascript: function (str) {
-    ToJavascript(str);
+    StringToJavascript(Pointer_stringify(str));
+  },
+
+  SwitchStateToJavascript: function (str) {
+    sendSwitchState(Pointer_stringify(str));
   },
 
   GetMessages: function () {

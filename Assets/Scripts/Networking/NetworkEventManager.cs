@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Text;
 
 public class NetworkEventManager : MonoBehaviour {
 
@@ -33,6 +34,18 @@ public class NetworkEventManager : MonoBehaviour {
 		}else{
 			Instance.EventListener(eventObj);
 		}
+	}
+
+	public static void SendSwitchState(NetworkSwitchState switchState){
+		NetworkEventObject switchEvent = new NetworkEventObject();
+		switchEvent.p = JsonUtility.ToJson(switchState);
+		switchEvent.e = NetworkEventObject.EventType.SwitchFlicked;
+		JsInterface.SwitchStateToJavascript(JsonUtility.ToJson(switchEvent));
+	}
+
+	public static void SendNetworkEvent(NetworkEventObject eventMessage){
+		string payload = JsonUtility.ToJson(eventMessage);
+		JsInterface.ToJavascript(payload);
 	}
 
 	// Use this for initialization

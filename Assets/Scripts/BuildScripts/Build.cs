@@ -6,6 +6,11 @@ using System.Diagnostics;
 
 public class Build {
 
+    [MenuItem("Build/Manual/Post Build WebGL")]
+	static void PostBuildWebGL ()
+	{   
+        StartPostBuild(BuildTarget.WebGL);
+	}
     [MenuItem("Build/WebGL")]
 	static void BuildWebGL ()
 	{   
